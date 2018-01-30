@@ -129,6 +129,23 @@ class IntTensor(BaseTensor):
         else:
             return False
 
+    def take(self, indices):
+        """
+        Returns a new tensor of same shape as the indices, which consists of elements of the input tensor at the given indices.
+        The input tensor is taking as a 1-D tensor
+        
+        Parameters
+        ----------
+        indices : IntTensor
+            the indices into the input tensor
+        
+        Returns
+        -------
+        FloatTensor
+            a new tensor with elements of the input tensor at the given indices
+        """
+        return self.params_func("take", [indices.id], return_response=True, return_type="FloatTensor")
+
     def neg(self):
         """
         Sets negative of the elements of tensor.
